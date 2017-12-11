@@ -77,63 +77,64 @@ namespace Bank
         }
 
         //Login function
-        public static void Login(User user, string defaultDataPath, string dataPath, string passwordInput, bool nameCheck, bool passwordCheck, bool skipLogReg)
-        {
-            nameCheck = true;
-            Console.WriteLine("Please insert your username: ");
-            user.Name = Console.ReadLine();
-            dataPath = defaultDataPath + user.Name + ".txt";
+        //public static void Login(User user, string defaultDataPath, string dataPath, string passwordInput, bool nameCheck, bool passwordCheck, bool skipLogReg)
+        //{
+        //    nameCheck = true;
+        //    Console.WriteLine("Please insert your username: ");
+        //    user.Name = Console.ReadLine();
+        //    dataPath = defaultDataPath + user.Name + ".txt";
 
-            if (!File.Exists(dataPath))
-            {
-                while (nameCheck == true)
-                {
-                    Console.WriteLine("Username doesn't exist, please try again(Type 'Back' if you want to cancel current action): ");
-                    user.Name = Console.ReadLine();
-                    dataPath = defaultDataPath + user.Name + ".txt";
-                    if (File.Exists(dataPath))
-                    {
-                        nameCheck = false;
-                    }
-                    if (user.Name == "Back")
-                    {
-                        breakout = true;
-                    }
-                }
-            }
+        //    if (!File.Exists(dataPath))
+        //    {
+        //        while (nameCheck == true)
+        //        {
+        //            Console.WriteLine("Username doesn't exist, please try again(Type 'Back' if you want to cancel current action): ");
+        //            user.Name = Console.ReadLine();
+        //            dataPath = defaultDataPath + user.Name + ".txt";
+        //            if (File.Exists(dataPath))
+        //            {
+        //                nameCheck = false;
+        //            }
+        //            if (user.Name == "Back")
+        //            {
+        //                breakout = true;
+        //            }
+        //        }
+        //    }
 
-            if (breakout == false)
-            {
-                if (File.Exists(dataPath))
-                {
-                    using (StreamReader sr = File.OpenText(dataPath))
-                    {
-                        user.Password = sr.ReadLine();
-                        user.Balance = Int32.Parse(sr.ReadLine());
-                    }
+        //    if (breakout == false)
+        //    {
+        //        if (File.Exists(dataPath))
+        //        {
+        //            using (StreamReader sr = File.OpenText(dataPath))
+        //            {
+        //                user.Password = sr.ReadLine();
+        //                user.Balance = Int32.Parse(sr.ReadLine());
+        //            }
 
-                    Console.WriteLine("Please insert your password: ");
-                    passwordInput = Console.ReadLine();
-                    if (passwordInput != user.Password)
-                    {
-                        while (passwordCheck == true)
-                        {
-                            Console.WriteLine("Password isn't correct, try again(Type 'Back' if you want to cancel current action)");
-                            passwordInput = Console.ReadLine();
-                            if (passwordInput == user.Password)
-                            {
-                                passwordCheck = false;
-                            }
-                            if (passwordInput == "Back")
-                            {
-                                breakout = true;
-                            }
-                        }
+        //            Console.WriteLine("Please insert your password: ");
+        //            passwordInput = Console.ReadLine();
+        //            if (passwordInput != user.Password)
+        //            {
+        //                while (passwordCheck == true)
+        //                {
+        //                    Console.WriteLine("Password isn't correct, try again(Type 'Back' if you want to cancel current action)");
+        //                    passwordInput = Console.ReadLine();
+        //                    if (passwordInput == user.Password)
+        //                    {
+        //                        passwordCheck = false;
+        //                        skipLogReg = true;
+        //                    }
+        //                    if (passwordInput == "Back")
+        //                    {
+        //                        breakout = true;
+        //                    }
+        //                }
 
-                    }
-                }
-            }
-        }
+        //            }
+        //        }
+        //    }
+        //}
 
         //Insert function
         public void Insert()
